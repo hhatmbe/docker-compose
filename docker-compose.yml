@@ -7,9 +7,9 @@ services:
       - NET_ADMIN
     networks:
       net1:
-        ipv6_address: 2001:db8:1::1
+        ipv6_address: 2001:db8:1001::1
       net2:
-        ipv6_address: 2001:db8:2::1
+        ipv6_address: 2001:db8:1002::1
 
   pc1:
     image: alpine
@@ -18,7 +18,7 @@ services:
       - NET_ADMIN
     networks:
       net1:
-        ipv6_address: 2001:db8:1::2
+        ipv6_address: 2001:db8:1001::2
 
   pc2:
     image: alpine
@@ -27,7 +27,7 @@ services:
       - NET_ADMIN
     networks:
       net2:
-        ipv6_address: 2001:db8:2::2
+        ipv6_address: 2001:db8:1002::2
 
 networks:
   net1:
@@ -36,7 +36,7 @@ networks:
     ipam:
       driver: default
       config:
-        - subnet: 2001:db8:1::/64
+        - subnet: 2001:db8:1001::/64
 
   net2:
     enable_ipv6: true
@@ -44,5 +44,4 @@ networks:
     ipam:
       driver: default
       config:
-        - subnet: 2001:db8:2::/64
-
+        - subnet: 2001:db8:1002::/64
