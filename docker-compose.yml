@@ -1,0 +1,47 @@
+version: '3'
+services:
+  router:
+    image: alpine
+    container_name: router1
+    cap_add:
+      - NET_ADMIN
+    networks:
+      net1:
+        ipv6_address: 2001:db8:1::1/64
+      net2:
+        ipv6_address: 2001:db8:2::1/64
+
+  pc1:
+    image: kali
+    container_name: pc1
+    cap_add:
+      - NET_ADMIN
+    networks:
+      net1:
+        ipv6_address: 2001:db8:1::2/64
+
+  pc2:
+    image: kali
+    container_name: pc2
+    cap_add:
+      - NET_ADMIN
+    networks:
+      net2:
+        ipv6_address: 2001:db8:2::2/64
+
+networks:
+  net1:
+    enable_ipv6: true
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 2001:db8:1::/64
+
+  net2:
+    enable_ipv6: true
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 2001:db8:2::/64
