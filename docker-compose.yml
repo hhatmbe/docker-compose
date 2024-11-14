@@ -12,7 +12,7 @@ services:
         ipv6_address: 2001:db8:2::1/64
 
   pc1:
-    image: kali
+    image: alpine
     container_name: pc1
     cap_add:
       - NET_ADMIN
@@ -21,7 +21,7 @@ services:
         ipv6_address: 2001:db8:1::2/64
 
   pc2:
-    image: kali
+    image: alpine
     container_name: pc2
     cap_add:
       - NET_ADMIN
